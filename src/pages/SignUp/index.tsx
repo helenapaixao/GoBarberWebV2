@@ -25,6 +25,7 @@ const SignUp: React.FC = () => {
                     'No minimo senha com 6 caracteres',
                 ),
             });
+
             await shema.validate(data, {
                 abortEarly: false,
             });
@@ -42,7 +43,7 @@ const SignUp: React.FC = () => {
 
                 <Form ref={formRef} onSubmit={handleSubmit}>
                     <h1>Faça seu cadastro</h1>
-                    <Input name="name" icon={FiUser} placeholder="Nome" />
+                    <Input name="name" icon={FiUser} type="text" placeholder="Nome" />
                     <Input
                         name="email"
                         icon={FiMail}

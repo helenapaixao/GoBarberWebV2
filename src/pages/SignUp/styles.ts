@@ -25,10 +25,7 @@ export const Content = styled.div`
             margin-bottom: 24px;
         }
 
-        
-
-      
-
+    
         a {
             color: #f4ede8;
             display: block;
@@ -48,16 +45,19 @@ export const Content = styled.div`
         margin-top: 24px;
         text-decoration: none;
         transition: color 0.2s;
+
         display: flex;
         align-items: center;
-
-        &:hover {
-                color: ${shade(0.2, '#F4EDE8')};
-            }
 
         svg {
             margin-left: 16px;
         }
+
+        &:hover {
+                color: ${shade(0.2, '#ff9000')};
+            }
+
+       
     }
 `;
 
