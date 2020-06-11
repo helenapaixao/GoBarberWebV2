@@ -8,6 +8,7 @@ import GlobalStyle from '../src/styles/global';
 function App() {
   return (
       <>
+      <SignIn/>
       <SignUp/>
       <GlobalStyle/>
       </>
