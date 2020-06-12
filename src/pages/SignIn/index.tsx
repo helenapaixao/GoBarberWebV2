@@ -49,7 +49,11 @@ const SignIn: React.FC = () => {
                     formRef.current?.setErrors(errors);
                 }
                
-                    addToast();
+                    addToast({
+                        type:'error',
+                        title: 'Erro na autenticação',
+                        description: 'Ocorreu um erro ao fazer o login, cheque as credenciais '
+                    });
                 
             }
         },
