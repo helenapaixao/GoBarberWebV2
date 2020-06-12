@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useState, useContext } from 'react';
-import api from '../../src/services/api';
+import api from '../services/api';
 
 interface AuthState {
     token: string;
