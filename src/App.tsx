@@ -5,6 +5,9 @@ import Routes from '../src/routes/index';
 
 import AppProvider from './hooks/index';
 
+
+
+
 const App: React.FC = () => (
     <Router>
         <AppProvider>
