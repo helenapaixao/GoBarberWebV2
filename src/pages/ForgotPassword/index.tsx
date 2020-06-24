@@ -19,7 +19,7 @@ interface SignInFormData {
     password: string;
 }
 
-const SignIn: React.FC = () => {
+const ForgotPassword: React.FC = () => {
     const formRef = useRef<FormHandles>(null);
     const { signIn } = useAuth();
     const { addToast } = useToast();
@@ -81,7 +81,7 @@ const SignIn: React.FC = () => {
                             placeholder="Senha"
                         />
                         <Button type="submit">Entrar</Button>
-                        <Link to="/forgot-password" > Esqueci minha senha</Link>
+                        <a href="forgot"> Esqueci minha senha</a>
                     </Form>
                     <Link to="/signup">
                         <FiLogIn />
@@ -94,4 +94,4 @@ const SignIn: React.FC = () => {
     );
 };
 
-export default SignIn;
+export default ForgotPassword;
