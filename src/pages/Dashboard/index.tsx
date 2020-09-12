@@ -1,24 +1,22 @@
 import React from 'react';
-import { Container, Header, HeaderContent, Profile } from './styles';
+import { Container, Header, HeaderContent, Profile, Content, Schedule,Calendar,NextAppointment} from './styles';
 import logoImg from '../../assets/logo.svg';
-import { FiPower } from 'react-icons/fi';
+import { FiPower, FiClock } from 'react-icons/fi';
 import { useAuth } from '../../hooks/auth';
 
 const Dashboard: React.FC = () => {
-    const {signOut} = useAuth();
+    const { signOut, user } = useAuth();
+    console.log(user);
     return (
         <Container>
             <Header>
                 <HeaderContent>
                     <img src={logoImg} alt="GoBarber" />
                     <Profile>
-                        <img
-                            src="https://avatars3.githubusercontent.com/u/11083288?s=460&u=06cb1598cc0323d116f30792141f147c8bd3ed28&v=4"
-                            alt="Avatar"
-                        />
+                        <img src={user.avatar_url} alt={user.name} />
                         <div>
                             <span>Bem-vindo,</span>
-                            <strong>Helena Paixão</strong>
+                            <strong>{user.name}</strong>
                         </div>
                     </Profile>
                     <button type="button" onClick={signOut}>
@@ -26,6 +24,36 @@ const Dashboard: React.FC = () => {
                     </button>
                 </HeaderContent>
             </Header>
+            <Content>
+                <Schedule>
+                <h1>Horários agendados</h1>
+                <p>
+                    <span>
+                        Hoje
+                    </span>
+                    <span>
+                        Hoje
+                    </span>
+                    <span>
+                        Hoje
+                    </span>
+                </p>
+                <NextAppointment>
+                    <strong>Atendimento a seguir</strong>
+                    <div>
+                        <img src="https://avatars3.githubusercontent.com/u/11083288?s=460&u=06cb1598cc0323d116f30792141f147c8bd3ed28&v=4://github.com/account"/>
+                        <strong>
+                           Diego Fernandes 
+                        </strong>
+                        <span>
+                            <FiClock/>
+                            08:00
+                        </span>
+                    </div>
+                </NextAppointment>
+                </Schedule>
+                <Calendar/>
+            </Content>
         </Container>
     );
 };
