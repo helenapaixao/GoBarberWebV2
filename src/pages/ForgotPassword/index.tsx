@@ -14,9 +14,8 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import api from '../../services/api';
 
-interface SignInFormData {
+interface ForgotPasswordFormData {
     email: string;
-    password: string;
 }
 
 const ForgotPassword: React.FC = () => {
@@ -27,7 +26,7 @@ const ForgotPassword: React.FC = () => {
 
 
     const handleSubmit = useCallback(
-        async (data: SignInFormData) => {
+        async (data: ForgotPasswordFormData) => {
             try {
                 setLoading(true);
                 formRef.current?.setErrors({});
@@ -50,8 +49,8 @@ const ForgotPassword: React.FC = () => {
                     title:'E-mail de recuperação enviado',
                     description:'Enviamos um e-mail para recuperação de senha,cheque sua caixa de entrada'
                 })
-            
-                //history.push('/dashboard');
+            /* 
+                history.push('/dashboard'); */
             } catch (err) {
                 if (err instanceof Yup.ValidationError) {
                     const errors = getValidationErrors(err);
