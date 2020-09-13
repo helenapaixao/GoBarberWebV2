@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import DayPicker, { DayModifiers } from 'react-day-picker';
+import 'react-day-picker/lib/style.css';
+
 import {
     Container,
     Header,
@@ -17,7 +20,17 @@ import { useAuth } from '../../hooks/auth';
 
 const Dashboard: React.FC = () => {
     const { signOut, user } = useAuth();
-    const [selectedDate, setSelectedDate] = useState(new Date())
+    const [selectedDate, setSelectedDate] = useState(new Date());
+
+    const handleDateChange = useCallback(
+        (day: Date, modifiers: DayModifiers) => {
+            if (modifiers.available) {
+                setSelectedDate(day);
+            }
+        },
+        [],
+    );
+
     console.log(user);
     return (
         <Container>
@@ -41,14 +54,14 @@ const Dashboard: React.FC = () => {
                     <h1>Horários agendados</h1>
                     <p>
                         <span>Hoje</span>
-                        <span>Hoje</span>
-                        <span>Hoje</span>
+                        <span>06</span>
+                        <span>Sábado</span>
                     </p>
                     <NextAppointment>
                         <strong>Atendimento a seguir</strong>
                         <div>
                             <img src="https://avatars3.githubusercontent.com/u/11083288?s=460&u=06cb1598cc0323d116f30792141f147c8bd3ed28&v=4://github.com/account" />
-                            <strong>Diego Fernandes</strong>
+                            <strong>Helena Paixão</strong>
                             <span>
                                 <FiClock />
                                 08:00
@@ -64,17 +77,17 @@ const Dashboard: React.FC = () => {
                             </span>
                             <div>
                                 <img src="https://avatars3.githubusercontent.com/u/11083288?s=460&u=06cb1598cc0323d116f30792141f147c8bd3ed28&v=4://github.com/account" />
-                                <strong>Diego Fernandes</strong>
+                                <strong>Helena Paixão</strong>
                             </div>
                         </Appointment>
                         <Appointment>
                             <span>
                                 <FiClock />
-                                08:00
+                                09:00
                             </span>
                             <div>
                                 <img src="https://avatars3.githubusercontent.com/u/11083288?s=460&u=06cb1598cc0323d116f30792141f147c8bd3ed28&v=4://github.com/account" />
-                                <strong>Diego Fernandes</strong>
+                                <strong>Helena Paixão</strong>
                             </div>
                         </Appointment>
                     </Section>
@@ -83,16 +96,41 @@ const Dashboard: React.FC = () => {
                         <Appointment>
                             <span>
                                 <FiClock />
-                                08:00
+                                15:00
                             </span>
                             <div>
                                 <img src="https://avatars3.githubusercontent.com/u/11083288?s=460&u=06cb1598cc0323d116f30792141f147c8bd3ed28&v=4://github.com/account" />
-                                <strong>Diego Fernandes</strong>
+                                <strong>Helena Paixão</strong>
                             </div>
                         </Appointment>
                     </Section>
                 </Schedule>
-                <Calendar />
+                <Calendar>
+                    <DayPicker
+                        weekdaysShort={['D', 'S', 'Q', 'Q', 'S', 'S', 'D']}
+                        fromMonth={new Date()}
+                        disabledDays={[{ daysOfWeek: [0, 6] }]}
+                        modifiers={{
+                            available: { daysOfWeek: [1, 2, 3, 4, 5] },
+                        }}
+                        selectedDays={selectedDate}
+                        onDayClick={handleDateChange}
+                        months={[
+                            'Janeiro',
+                            'Fevereiro',
+                            'Março',
+                            'Abril',
+                            'Maio',
+                            'Junho',
+                            'Julho',
+                            'Agosto',
+                            'Setembro',
+                            'Outubro',
+                            'Novembro',
+                            'Dezembro',
+                        ]}
+                    />
+                </Calendar>
             </Content>
         </Container>
     );
